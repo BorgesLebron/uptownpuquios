@@ -1,0 +1,6 @@
+#global settings
+title: "Hector Borges Portfolio"
+description: "Cybersecurity & AI Research Portfolio"
+permalink: pretty
+url: "https://borgeslebron.github.io"
+relative_permalinks: false
