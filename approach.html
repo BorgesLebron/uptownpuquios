@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Approach — Uptown Puquios</title>
+<meta name="description" content="Every engagement follows a disciplined process: Assessment → Remediation → Implementation. Built for organizations that need more than a report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0D1B2A; --navy-mid: #1A2E45; --navy-light: #243B55;
+  --gold: #C9A84C; --gold-light: #E8C97A;
+  --cream: #F8F4EE; --cream-mid: #EDE8DF;
+  --slate: #8899AA; --white: #FFFFFF;
+  --text: #2C3E50; --text-light: #5A6A7A;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 60px; background: rgba(13,27,42,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.15); }
+.nav-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); letter-spacing: 0.5px; text-decoration: none; }
+.nav-wordmark span { color: var(--gold); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 10px 24px; text-decoration: none; transition: all 0.2s; }
+.nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+/* PAGE HERO */
+.page-hero { background: var(--navy); padding: 160px 60px 80px; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.05) 0%, transparent 60%), linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: auto, 60px 60px, 60px 60px; }
+.page-hero-content { position: relative; z-index: 1; max-width: 800px; }
+.page-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.page-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5.5vw, 72px); font-weight: 600; line-height: 1.0; color: var(--white); letter-spacing: -1px; margin-bottom: 24px; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.page-hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 560px; font-weight: 300; }
+
+/* SECTION BASE */
+section { padding: 100px 60px; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.section-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 54px); font-weight: 600; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 20px; }
+
+/* METHODOLOGY */
+.methodology { background: var(--white); }
+.methodology .section-heading { color: var(--navy); }
+.methodology-intro { max-width: 680px; margin-bottom: 72px; }
+.methodology-intro p { font-size: 17px; color: var(--text-light); line-height: 1.7; font-weight: 300; }
+.steps { display: flex; flex-direction: column; gap: 2px; }
+.step { display: grid; grid-template-columns: 200px 1fr; gap: 0; background: var(--cream); }
+.step:nth-child(even) { background: var(--white); }
+.step-num-col { padding: 48px 40px; border-right: 1px solid var(--cream-mid); display: flex; flex-direction: column; justify-content: space-between; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 700; color: var(--cream-mid); line-height: 1; }
+.step:nth-child(even) .step-num { color: var(--cream-mid); }
+.step-phase { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-top: 16px; }
+.step-content { padding: 48px 56px; }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
+.step-desc { font-size: 15px; color: var(--text-light); line-height: 1.8; margin-bottom: 28px; }
+.step-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.step-detail { background: var(--white); padding: 20px 24px; border-left: 2px solid var(--gold); }
+.step:nth-child(even) .step-detail { background: var(--cream); }
+.step-detail-title { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
+.step-detail-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+/* STANDARDS */
+.standards { background: var(--navy); position: relative; overflow: hidden; }
+.standards::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+.standards-inner { position: relative; z-index: 1; }
+.standards .section-heading { color: var(--white); }
+.standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+.standard-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.1); padding: 40px 32px; }
+.standard-num { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.standard-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+.standard-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* NOT JUST ADVISORY */
+.not-advisory { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.not-advisory .section-heading { color: var(--navy); }
+.not-advisory p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+.comparison { display: flex; flex-direction: column; gap: 2px; }
+.comparison-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.comp-col { padding: 20px 24px; }
+.comp-col.col-typical { background: var(--cream-mid); }
+.comp-col.col-uptown { background: var(--navy); }
+.comp-header { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.col-typical .comp-header { color: var(--slate); }
+.col-uptown .comp-header { color: var(--gold); }
+.comp-text { font-size: 14px; line-height: 1.5; }
+.col-typical .comp-text { color: var(--text-light); }
+.col-uptown .comp-text { color: rgba(255,255,255,0.7); }
+
+/* CTA STRIP */
+.cta-strip { background: var(--gold); padding: 72px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-strip-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(13,27,42,0.6); margin-bottom: 12px; }
+.cta-strip-heading { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; color: var(--navy); line-height: 1.1; }
+.cta-strip-sub { font-size: 15px; color: rgba(13,27,42,0.65); margin-top: 12px; max-width: 480px; }
+.btn-navy { display: inline-block; background: var(--navy); color: var(--white); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 18px 40px; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+.btn-navy:hover { background: var(--navy-mid); }
+
+/* FOOTER */
+footer { background: var(--navy); padding: 48px 60px; border-top: 1px solid rgba(201,168,76,0.1); }
+.footer-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+.footer-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); }
+.footer-wordmark span { color: var(--gold); }
+.footer-tagline { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px; }
+.footer-nav { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
+.footer-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--gold); }
+.footer-contact { text-align: right; }
+.footer-contact a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 6px; transition: color 0.2s; }
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 72px 24px; }
+  .page-hero { padding: 120px 24px 60px; }
+  .step { grid-template-columns: 1fr; }
+  .step-num-col { padding: 24px; border-right: none; border-bottom: 1px solid var(--cream-mid); flex-direction: row; align-items: center; gap: 24px; }
+  .step-content { padding: 32px 24px; }
+  .step-details { grid-template-columns: 1fr; }
+  .standards-grid { grid-template-columns: 1fr; }
+  .not-advisory { grid-template-columns: 1fr; gap: 40px; }
+  .comparison-row { grid-template-columns: 1fr; }
+  .cta-strip { padding: 48px 24px; }
+  .footer-main { flex-direction: column; }
+  .footer-contact { text-align: left; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="uptownpuquios.html" class="nav-wordmark">Uptown <span>Puquios</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="approach.html" class="active">Approach</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Request Consultation</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-label">Our Approach</div>
+    <h1>Structured. Disciplined.<br><em>Built to execute.</em></h1>
+    <p class="page-hero-sub">
+      Every engagement follows a defined process — from assessment through implementation —
+      with measurable outcomes at every stage. No generic checklists. No advisory-only deliverables.
+    </p>
+  </div>
+</div>
+
+<!-- METHODOLOGY -->
+<section class="methodology">
+  <div class="methodology-intro">
+    <div class="section-label">Methodology</div>
+    <h2 class="section-heading">How we work.</h2>
+    <p>Three stages. Each builds on the last. Every recommendation is specific to your environment, and we stay engaged until execution is complete and documented.</p>
+  </div>
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">01</div>
+        <div class="step-phase">Phase One</div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Assessment</div>
+        <p class="step-desc">
+          We begin with a thorough review of your current compliance posture, operational workflows,
+          risk exposure, and documentation — identifying gaps before regulators or adverse events do.
+          This is not a desk review. It's an operational audit aligned to the standards that govern your environment.
+        </p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="step-detail-title">Compliance Review</div>
+            <p class="step-detail-desc">Documentation, policy, and procedure audit against applicable regulatory standards.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Operational Walkthrough</div>
+            <p class="step-detail-desc">On-site or remote review of workflows, staff practices, and system performance.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Risk Mapping</div>
+            <p class="step-detail-desc">Identification and prioritization of compliance gaps and operational vulnerabilities.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Leadership Debrief</div>
+            <p class="step-detail-desc">Executive-ready findings delivered with context, severity ranking, and strategic implications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">02</div>
+        <div class="step-phase">Phase Two</div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Remediation Plan</div>
+        <p class="step-desc">
+          A prioritized action plan with specific, implementable recommendations. Not a generic checklist —
+          every recommendation is built for your environment, your regulatory framework, and your operational reality.
+          Sequenced by risk severity and organizational capacity.
+        </p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="step-detail-title">Prioritized Action Plan</div>
+            <p class="step-detail-desc">Ranked recommendations with timelines, owners, and success criteria.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Policy Alignment</div>
+            <p class="step-detail-desc">Updated or newly drafted policies that reflect regulatory requirements and operational realities.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Survey Defense Strategy</div>
+            <p class="step-detail-desc">Prepare leadership and staff to respond confidently during regulatory surveys or inspections.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Documentation Package</div>
+            <p class="step-detail-desc">Defensible documentation trail demonstrating compliance effort and organizational due diligence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">03</div>
+        <div class="step-phase">Phase Three</div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Implementation Support</div>
+        <p class="step-desc">
+          We stay engaged through execution — updating policies, supporting staff, and verifying that
+          remediation is complete, documented, and defensible. Most consultants hand you a report.
+          We stay until the work is done.
+        </p>
+        <div class="step-details">
+          <div class="step-detail">
+            <div class="step-detail-title">Hands-On Support</div>
+            <p class="step-detail-desc">Active involvement in implementing recommendations — not just oversight.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Progress Tracking</div>
+            <p class="step-detail-desc">Regular check-ins and status reporting against the remediation plan milestones.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Verification</div>
+            <p class="step-detail-desc">Confirm that corrective actions are effective, not just documented.</p>
+          </div>
+          <div class="step-detail">
+            <div class="step-detail-title">Closure Brief</div>
+            <p class="step-detail-desc">Final executive debrief confirming remediation status, residual risks, and recommended monitoring.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section class="standards">
+  <div class="standards-inner">
+    <div class="section-label">Our Standards</div>
+    <h2 class="section-heading" style="color:var(--white);">What we hold ourselves to.</h2>
+    <div class="standards-grid">
+      <div class="standard-item">
+        <div class="standard-num">Standard 01</div>
+        <div class="standard-title">Environment-Specific</div>
+        <p class="standard-desc">Every recommendation is tailored to your regulatory framework, your organization size, and your operational environment. We do not use templates.</p>
+      </div>
+      <div class="standard-item">
+        <div class="standard-num">Standard 02</div>
+        <div class="standard-title">Execution Over Advice</div>
+        <p class="standard-desc">We measure success by what gets implemented and documented — not by the length of a report. We stay until the work is complete.</p>
+      </div>
+      <div class="standard-item">
+        <div class="standard-num">Standard 03</div>
+        <div class="standard-title">Defensible Outcomes</div>
+        <p class="standard-desc">Every deliverable is designed to hold up under regulatory scrutiny — not just to satisfy an internal review. Documentation is a strategic asset.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOT JUST ADVISORY -->
+<section class="not-advisory">
+  <div>
+    <div class="section-label">The Difference</div>
+    <h2 class="section-heading">Execution-focused. Not advisory-only.</h2>
+    <p>
+      Most consultants deliver a report and move on. Uptown Puquios is built differently:
+      we stay engaged through implementation because a finding that isn't remediated
+      is a liability waiting to surface.
+    </p>
+    <p>
+      This approach comes from military operational experience — where identifying a gap
+      is not the mission. Closing it is.
+    </p>
+  </div>
+  <div class="comparison">
+    <div class="comparison-row">
+      <div class="comp-col col-typical">
+        <div class="comp-header">Typical Consultant</div>
+        <div class="comp-text">Delivers report. Engagement ends.</div>
+      </div>
+      <div class="comp-col col-uptown">
+        <div class="comp-header">Uptown Puquios</div>
+        <div class="comp-text">Stays through implementation. Engagement ends when the work is done.</div>
+      </div>
+    </div>
+    <div class="comparison-row">
+      <div class="comp-col col-typical">
+        <div class="comp-header">Typical Consultant</div>
+        <div class="comp-text">Generic checklists from a framework.</div>
+      </div>
+      <div class="comp-col col-uptown">
+        <div class="comp-header">Uptown Puquios</div>
+        <div class="comp-text">Recommendations built for your environment, your regulatory framework.</div>
+      </div>
+    </div>
+    <div class="comparison-row">
+      <div class="comp-col col-typical">
+        <div class="comp-header">Typical Consultant</div>
+        <div class="comp-text">Healthcare-only perspective.</div>
+      </div>
+      <div class="comp-col col-uptown">
+        <div class="comp-header">Uptown Puquios</div>
+        <div class="comp-text">Military + healthcare + legal — all three, applied simultaneously.</div>
+      </div>
+    </div>
+    <div class="comparison-row">
+      <div class="comp-col col-typical">
+        <div class="comp-header">Typical Consultant</div>
+        <div class="comp-text">Prepares for the survey.</div>
+      </div>
+      <div class="comp-col col-uptown">
+        <div class="comp-header">Uptown Puquios</div>
+        <div class="comp-text">Prepares the organization to perform — under pressure, in real conditions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div>
+    <div class="cta-strip-eyebrow">Limited Availability</div>
+    <div class="cta-strip-heading">Ready to work with a team that executes?</div>
+    <p class="cta-strip-sub">Limited engagement capacity each quarter. Organizations are onboarded based on operational need and scope.</p>
+  </div>
+  <a href="contact.html" class="btn-navy">Request Strategic Consultation</a>
+</div>
+
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-wordmark">Uptown <span>Puquios</span></div>
+      <div class="footer-tagline">High-Reliability Operations & Compliance Advisory</div>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="mailto:mquartey@uptownpuquios.com">mquartey@uptownpuquios.com</a>
+      <a href="tel:6122210263">(612) 221-0263</a>
+      <a href="https://linkedin.com/in/mark-quartey-mjur-mha-rrt-nps-a5434521" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Uptown Puquios LLC. All rights reserved.</div>
+    <div class="footer-copy">San Antonio, TX &amp; Nationwide Remote</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) { el.target.style.opacity = '1'; el.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.step, .standard-item, .comparison-row').forEach(el => {
+  el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

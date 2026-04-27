@@ -1,15 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uptown Puquios — High-Reliability Operations & Compliance Advisory</title>
+<meta name="description" content="Uptown Puquios supports healthcare organizations, military medical units, and high-reliability systems in eliminating compliance risk, strengthening operational readiness, and executing under regulatory pressure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
-    
-    <title>Document</title>
+:root {
+  --navy:      #0D1B2A;
+  --navy-mid:  #1A2E45;
+  --navy-light:#243B55;
+  --gold:      #C9A84C;
+  --gold-light:#E8C97A;
+  --cream:     #F8F4EE;
+  --cream-mid: #EDE8DF;
+  --slate:     #8899AA;
+  --white:     #FFFFFF;
+  --text:      #2C3E50;
+  --text-light:#5A6A7A;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  background: rgba(13,27,42,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.nav-wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--white); letter-spacing: 0.5px;
+  text-decoration: none;
+}
+.nav-wordmark span { color: var(--gold); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-cta {
+  font-size: 13px; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid var(--gold); padding: 10px 24px;
+  text-decoration: none; transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 120px 60px 80px;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(26,46,69,0.8) 0%, transparent 50%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-content { position: relative; z-index: 1; max-width: 760px; }
+.hero-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 600; line-height: 1.0;
+  color: var(--white); letter-spacing: -1px;
+  margin-bottom: 28px;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-authority {
+  font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(201,168,76,0.7); margin-bottom: 20px;
+  font-family: 'DM Mono', monospace;
+}
+.hero-sub {
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7; max-width: 560px;
+  margin-bottom: 48px; font-weight: 300;
+}
+.hero-actions { display: flex; gap: 20px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold); color: var(--navy);
+  font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 16px 36px;
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.25); color: var(--white);
+  font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 16px 36px;
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-credentials {
+  position: absolute; right: 60px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 16px;
+  z-index: 1;
+}
+.cred-badge {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 16px 24px; text-align: center;
+  min-width: 140px;
+}
+.cred-badge .abbr {
+  font-family: 'DM Mono', monospace;
+  font-size: 20px; font-weight: 500;
+  color: var(--gold); display: block; margin-bottom: 4px;
+}
+.cred-badge .full { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+/* ── POWER STRIP ── */
+.power-strip {
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 22px 60px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.power-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+.power-item::before {
+  content: '✔';
+  color: var(--gold); font-size: 13px;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 100px 60px; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 600; line-height: 1.1;
+  letter-spacing: -0.5px; margin-bottom: 20px;
+}
+.section-sub { font-size: 17px; color: var(--text-light); line-height: 1.7; max-width: 600px; font-weight: 300; }
+
+/* ── DIFFERENCE SECTION ── */
+.difference {
+  background: var(--white);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.difference-text .section-heading { color: var(--navy); }
+.difference-text p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+.difference-text .btn-secondary {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--navy);
+  border-bottom: 2px solid var(--gold); padding-bottom: 4px;
+  text-decoration: none; margin-top: 16px;
+  transition: color 0.2s;
+}
+.difference-text .btn-secondary:hover { color: var(--gold); }
+.difference-visual .about-card {
+  background: var(--navy); padding: 48px 40px; position: relative;
+}
+.difference-visual .about-card::before {
+  content: '';
+  position: absolute; top: -10px; left: -10px; right: 10px; bottom: 10px;
+  border: 1px solid rgba(201,168,76,0.3); pointer-events: none;
+}
+.about-card .name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.about-card .title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+.about-card .bio { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 28px; }
+.creds-list { display: flex; gap: 10px; flex-wrap: wrap; }
+.cred-tag { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 6px 14px; }
+
+/* ── OFFER TIERS ── */
+.offers { background: var(--cream); }
+.offers .section-heading { color: var(--navy); }
+.offers-intro { margin-bottom: 60px; }
+.offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.offer-card {
+  background: var(--white);
+  padding: 48px 36px;
+  position: relative;
+}
+.offer-card.featured {
+  background: var(--navy);
+}
+.offer-tier {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.offer-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 600;
+  color: var(--navy); margin-bottom: 8px; line-height: 1.2;
+}
+.offer-card.featured .offer-title { color: var(--white); }
+.offer-duration {
+  font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--slate); margin-bottom: 24px;
+}
+.offer-card.featured .offer-duration { color: rgba(255,255,255,0.4); }
+.offer-divider { height: 1px; background: var(--cream-mid); margin-bottom: 24px; }
+.offer-card.featured .offer-divider { background: rgba(201,168,76,0.2); }
+.offer-desc {
+  font-size: 14px; color: var(--text-light);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.offer-card.featured .offer-desc { color: rgba(255,255,255,0.6); }
+.offer-list { list-style: none; }
+.offer-list li {
+  font-size: 13px; color: var(--text);
+  padding: 8px 0; border-bottom: 1px solid var(--cream-mid);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.offer-card.featured .offer-list li { color: rgba(255,255,255,0.75); border-bottom-color: rgba(255,255,255,0.08); }
+.offer-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.offer-cta {
+  display: inline-block; margin-top: 32px;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--navy);
+  border-bottom: 2px solid var(--gold); padding-bottom: 4px;
+  text-decoration: none; transition: color 0.2s;
+}
+.offer-card.featured .offer-cta { color: var(--gold); border-bottom-color: rgba(201,168,76,0.4); }
+.offer-cta:hover { color: var(--gold); }
+.offer-badge {
+  position: absolute; top: -1px; right: 32px;
+  background: var(--gold); color: var(--navy);
+  font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 6px 16px;
+}
+
+/* ── SERVICES TEASER ── */
+.services-teaser { background: var(--navy); position: relative; overflow: hidden; }
+.services-teaser::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.services-teaser .section-heading { color: var(--white); }
+.services-teaser .section-sub { color: rgba(255,255,255,0.5); }
+.services-teaser-header { margin-bottom: 60px; position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+.teaser-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; position: relative; z-index: 1; }
+.teaser-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 36px 32px;
+  transition: all 0.3s;
+}
+.teaser-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(201,168,76,0.25); }
+.teaser-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 700;
+  color: rgba(201,168,76,0.15); line-height: 1;
+  margin-bottom: 16px;
+}
+.teaser-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--white); margin-bottom: 10px; line-height: 1.2;
+}
+.teaser-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.teaser-card.highlight { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.25); }
+.teaser-card.highlight .teaser-title { color: var(--gold); }
+.teaser-card.highlight .teaser-desc { color: rgba(255,255,255,0.65); }
+.services-see-all {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4); padding: 12px 28px;
+  text-decoration: none; transition: all 0.2s;
+}
+.services-see-all:hover { background: var(--gold); color: var(--navy); }
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: var(--gold);
+  padding: 72px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+}
+.cta-strip-text {
+  max-width: 600px;
+}
+.cta-strip-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(13,27,42,0.6); margin-bottom: 12px;
+}
+.cta-strip-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600; color: var(--navy); line-height: 1.1;
+}
+.cta-strip-sub { font-size: 15px; color: rgba(13,27,42,0.65); margin-top: 12px; max-width: 480px; }
+.btn-navy {
+  display: inline-block;
+  background: var(--navy); color: var(--white);
+  font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 18px 40px;
+  text-decoration: none; transition: all 0.2s; white-space: nowrap;
+}
+.btn-navy:hover { background: var(--navy-mid); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  padding: 48px 60px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.footer-main {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 40px;
+  flex-wrap: wrap; margin-bottom: 40px;
+}
+.footer-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); }
+.footer-wordmark span { color: var(--gold); }
+.footer-tagline { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px; }
+.footer-nav { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
+.footer-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--gold); }
+.footer-contact { text-align: right; }
+.footer-contact a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 6px; transition: color 0.2s; }
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content > * { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+.hero-label    { animation-delay: 0.1s; }
+.hero h1       { animation-delay: 0.25s; }
+.hero-authority { animation-delay: 0.35s; }
+.hero-sub      { animation-delay: 0.4s; }
+.hero-actions  { animation-delay: 0.55s; }
+.hero-credentials { animation: fadeUp 0.7s 0.7s ease forwards; opacity: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 72px 24px; }
+  .hero { padding: 100px 24px 72px; }
+  .hero-credentials { display: none; }
+  .difference { grid-template-columns: 1fr; gap: 48px; }
+  .offers-grid { grid-template-columns: 1fr; }
+  .teaser-grid { grid-template-columns: 1fr; }
+  .power-strip { padding: 20px 24px; gap: 24px; }
+  .cta-strip { padding: 48px 24px; }
+  .footer-main { flex-direction: column; }
+  .footer-contact { text-align: left; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+</style>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>Welcome to my Website</p>
+
+<!-- NAV -->
+<nav>
+  <a href="uptownpuquios.html" class="nav-wordmark">Uptown <span>Puquios</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="approach.html">Approach</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Request Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-label">High-Reliability Operations & Compliance Advisor</div>
+    <h1>Eliminate<br>Compliance Risk<br><em>Operate with<br>Confidence</em></h1>
+    <div class="hero-authority">Led by a senior healthcare leader with combined clinical, regulatory, and military operational experience.</div>
+    <p class="hero-sub">
+      Supporting Military Treatment Facilities, federal healthcare systems,
+      and high-reliability organizations operating in regulated environments.
+    </p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">Request Strategic Consultation</a>
+      <a href="services.html" class="btn-outline">View Services</a>
+    </div>
+  </div>
+  <div class="hero-credentials">
+    <div class="cred-badge">
+      <span class="abbr">MJur</span>
+      <span class="full">Jurisprudence</span>
+    </div>
+    <div class="cred-badge">
+      <span class="abbr">MHA</span>
+      <span class="full">Healthcare Administration</span>
+    </div>
+    <div class="cred-badge">
+      <span class="abbr">RRT‑NPS</span>
+      <span class="full">Respiratory Therapy</span>
+    </div>
+  </div>
+  <div class="hero-grid-lines"></div>
+</section>
+
+<!-- POWER STRIP -->
+<div class="power-strip">
+  <div class="power-item">Joint Commission Readiness</div>
+  <div class="power-item">DoD / Military Medical Operations</div>
+  <div class="power-item">Risk & Compliance Execution</div>
+  <div class="power-item">Emergency & Operational Readiness</div>
+</div>
+
+<!-- DIFFERENCE -->
+<section class="difference" id="about">
+  <div class="difference-text">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-heading">Where compliance meets mission-critical operations.</h2>
+    <p>
+      Uptown Puquios operates at the intersection of healthcare, regulation, and
+      mission-critical operations — where compliance failures are not administrative
+      issues, but operational risks.
+    </p>
+    <p>
+      With leadership experience across clinical environments and military operations,
+      we bring a disciplined, execution-focused approach to compliance and risk —
+      ensuring organizations are not only prepared for inspections, but capable of
+      performing under pressure.
+    </p>
+    <a href="about.html" class="btn-secondary">Learn More About Our Approach →</a>
+  </div>
+  <div class="difference-visual">
+    <div class="about-card">
+      <div class="name">Mark J. Quartey</div>
+      <div class="title">Principal Consultant & Advisor</div>
+      <p class="bio">
+        A senior healthcare leader with advanced credentials in Healthcare Administration,
+        Healthcare Law & Jurisprudence, and Respiratory Therapy — combined with real-world
+        clinical and military operational leadership. Mark specializes in high-stakes
+        regulatory environments where execution is non-negotiable.
+      </p>
+      <div class="creds-list">
+        <span class="cred-tag">MJur</span>
+        <span class="cred-tag">MHA</span>
+        <span class="cred-tag">RRT-NPS</span>
+        <span class="cred-tag">Military Operations</span>
+        <span class="cred-tag">Clinical Leadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER TIERS -->
+<section class="offers" id="engagements">
+  <div class="offers-intro">
+    <div class="section-label">Engagement Options</div>
+    <h2 class="section-heading">How we work together.</h2>
+    <p class="section-sub">
+      Three engagement levels designed to meet organizations where they are —
+      from rapid assessment to long-term advisory partnership.
+    </p>
+  </div>
+  <div class="offers-grid">
+
+    <div class="offer-card">
+      <div class="offer-tier">Tier 01 — Entry Point</div>
+      <div class="offer-title">Rapid Compliance Assessment</div>
+      <div class="offer-duration">2–3 Weeks</div>
+      <div class="offer-divider"></div>
+      <p class="offer-desc">High-level risk scan with immediate gap identification. Ideal for organizations that need a clear picture fast — before a survey, after an incident, or ahead of a leadership briefing.</p>
+      <ul class="offer-list">
+        <li>High-level compliance risk scan</li>
+        <li>Immediate gaps identified</li>
+        <li>Executive brief delivered</li>
+      </ul>
+      <a href="contact.html" class="offer-cta">Start Here →</a>
+    </div>
+
+    <div class="offer-card featured">
+      <div class="offer-badge">Core Engagement</div>
+      <div class="offer-tier">Tier 02 — Core Revenue</div>
+      <div class="offer-title">Full Compliance & Risk Engagement</div>
+      <div class="offer-duration">Custom Scope</div>
+      <div class="offer-divider"></div>
+      <p class="offer-desc">Deep-dive audit with a full remediation plan and implementation support. Built for organizations that need more than a report — they need execution.</p>
+      <ul class="offer-list">
+        <li>Deep-dive compliance audit</li>
+        <li>Full remediation plan</li>
+        <li>Implementation support</li>
+        <li>Policy & documentation alignment</li>
+      </ul>
+      <a href="contact.html" class="offer-cta">Request Proposal →</a>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-tier">Tier 03 — Recurring</div>
+      <div class="offer-title">Ongoing Advisory Retainer</div>
+      <div class="offer-duration">Monthly</div>
+      <div class="offer-divider"></div>
+      <p class="offer-desc">Continuous compliance monitoring and leadership advisory. For organizations that recognize compliance is not a project — it's an operating standard.</p>
+      <ul class="offer-list">
+        <li>Monthly oversight</li>
+        <li>Leadership advisory access</li>
+        <li>Continuous compliance monitoring</li>
+      </ul>
+      <a href="contact.html" class="offer-cta">Discuss Retainer →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES TEASER -->
+<section class="services-teaser">
+  <div class="services-teaser-header">
+    <div>
+      <div class="section-label">Services</div>
+      <h2 class="section-heading">Five practice areas.<br>One execution standard.</h2>
+      <p class="section-sub">Each engagement is built around your specific environment — not a generic checklist.</p>
+    </div>
+    <a href="services.html" class="services-see-all">View All Services</a>
+  </div>
+  <div class="teaser-grid">
+    <div class="teaser-card">
+      <div class="teaser-num">01</div>
+      <div class="teaser-title">Compliance & Audit Readiness</div>
+      <p class="teaser-desc">Inspection-ready, defensible compliance posture. Mock surveys, gap analysis, policy alignment.</p>
+    </div>
+    <div class="teaser-card">
+      <div class="teaser-num">02</div>
+      <div class="teaser-title">Regulatory Risk & Liability Reduction</div>
+      <p class="teaser-desc">Enterprise risk mapping, incident trend analysis, legal exposure assessment, corrective action planning.</p>
+    </div>
+    <div class="teaser-card">
+      <div class="teaser-num">03</div>
+      <div class="teaser-title">Operations Optimization</div>
+      <p class="teaser-desc">Efficient, compliant, high-reliability workflows. Workflow redesign, throughput analysis, compliance-aligned SOPs.</p>
+    </div>
+    <div class="teaser-card highlight">
+      <div class="teaser-num">05</div>
+      <div class="teaser-title">Operational Readiness & Exercise Support</div>
+      <p class="teaser-desc">We design, support, and evaluate large-scale medical readiness exercises aligned with real-world mission requirements — CSTX, Global Medic, and beyond. This is what separates us from 99% of consultants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-text">
+    <div class="cta-strip-eyebrow">Limited Availability</div>
+    <div class="cta-strip-heading">Ready to strengthen your compliance posture?</div>
+    <p class="cta-strip-sub">Limited engagement capacity each quarter. Organizations are onboarded based on operational need and scope.</p>
+  </div>
+  <a href="contact.html" class="btn-navy">Request Strategic Consultation</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-wordmark">Uptown <span>Puquios</span></div>
+      <div class="footer-tagline">High-Reliability Operations & Compliance Advisory</div>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="mailto:mquartey@uptownpuquios.com">mquartey@uptownpuquios.com</a>
+      <a href="tel:6122210263">(612) 221-0263</a>
+      <a href="https://linkedin.com/in/mark-quartey-mjur-mha-rrt-nps-a5434521" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Uptown Puquios LLC. All rights reserved.</div>
+    <div class="footer-copy">San Antonio, TX &amp; Nationwide Remote</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.style.opacity = '1';
+      el.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.offer-card, .teaser-card, .about-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
 </body>
 </html>
